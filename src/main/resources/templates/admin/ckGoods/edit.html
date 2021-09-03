@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('仓库信息修改')"/>
+</head>
+<body>
+<form class="layui-form" action=""  th:object="${CkGoods}">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+		
+						<div class="layui-form-item layui-hide">
+		                    <label class="layui-form-label">主键</label>
+		                    <div class="layui-input-block">
+		                        <input type="text" th:value="*{id}" name="id" lay-verify="title"
+		                               autocomplete="off" class="layui-input">
+		                    </div>
+		                </div>
+
+										
+						<div class="layui-form-item">
+		                    <label class="layui-form-label">库</label>
+		                    <div class="layui-input-block">
+								<select name="goodsNo" id="goodsNo" th:field="*{goodsNo}">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+								</select>
+		                    </div>
+		                </div>
+					                
+											
+										
+						<div class="layui-form-item">
+		                    <label class="layui-form-label">排</label>
+		                    <div class="layui-input-block">
+		                        <input th:value="*{goodsRow}" type="text" name="goodsRow" autocomplete="off" placeholder="排" class="layui-input">
+		                    </div>
+		                </div>
+					                
+											
+										
+						<div class="layui-form-item">
+		                    <label class="layui-form-label">格</label>
+		                    <div class="layui-input-block">
+		                        <input th:value="*{goodsCell}" type="text" name="goodsCell" autocomplete="off" placeholder="格" class="layui-input">
+		                    </div>
+		                </div>
+
+						<div class="layui-form-item">
+		                    <label class="layui-form-label">位</label>
+		                    <div class="layui-input-block">
+								<select name="goodsLocal" id="goodsLocal" th:field="*{goodsLocal}">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+								</select>
+		                    </div>
+		                </div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">描述</label>
+							<div class="layui-input-block">
+								<input th:value="*{remark}" type="text" name="remark" autocomplete="off" placeholder="描述" class="layui-input">
+							</div>
+						</div>
+
+							
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit=""
+                    lay-filter="ckGoods-update">
+                <i class="layui-icon layui-icon-ok"></i>
+				提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+				重置
+            </button>
+        </div>
+    </div>
+</form>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form','laydate','jquery'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        let MODULE_PATH = rootPath+"/CkGoodsController";
+		
+
+        form.on('submit(ckGoods-update)', function (data) {
+        	let loader = layer.load();
+            $.ajax({
+                url: MODULE_PATH+'/edit',
+                data: data.field,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded',
+                type: 'post',
+                success: function (result) {
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("ckGoods-table");
+                            layer.close(loader);
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                        layer.close(loader);
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

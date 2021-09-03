@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.v2.mapper.auto.CkOutOrderMapper">
+  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.CkOutOrder">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_level" jdbcType="INTEGER" property="orderLevel" />
+    <result column="out_event" jdbcType="VARCHAR" property="outEvent" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="finished" jdbcType="TINYINT" property="finished" />
+    <result column="alled" jdbcType="TINYINT" property="alled" />
+  </resultMap>
+
+  <sql id="selectCkOutOrderVo">
+        select id, order_level, out_event, create_by, create_time, update_by, update_time, remark, finished, alled, from ck_out_order
+   </sql>
+
+  <select id="selectCkOutOrderList" parameterType="com.fc.v2.model.auto.CkOutOrder" resultMap="BaseResultMap">
+    <include refid="selectCkOutOrderVo"/>
+    <where>
+        <if test="id != null "> and id = #{id}</if>
+        <if test="orderLevel != null "> and order_level = #{orderLevel}</if>
+        <if test="outEvent != null  and outEvent != ''"> and out_event = #{outEvent}</if>
+        <if test="finished != null "> and finished = #{finished}</if>
+        <if test="alled != null "> and alled = #{alled}</if>
+    </where>
+  </select>
+</mapper>

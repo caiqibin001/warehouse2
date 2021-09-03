@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.v2.mapper.auto.CkMaterialTypeMapper">
+  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.CkMaterialType">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+
+  <sql id="selectCkMaterialTypeVo">
+        select id, name, order_num, pid, desc, create_by, create_time, update_by, update_time, remark, from ck_material_type
+   </sql>
+
+  <select id="selectCkMaterialTypeList" parameterType="com.fc.v2.model.auto.CkMaterialType" resultMap="BaseResultMap">
+    <include refid="selectCkMaterialTypeVo"/>
+    <where>
+        <if test="id != null "> and id = #{id}</if>
+        <if test="name != null  and name != ''"> and name = #{name}</if>
+        <if test="orderNum != null "> and order_num = #{orderNum}</if>
+        <if test="pid != null "> and pid = #{pid}</if>
+        <if test="desc != null  and desc != ''"> and desc = #{desc}</if>
+    </where>
+  </select>
+
+    <select id="getall" resultMap="BaseResultMap">
+        select distinct p.*,(select count(1) from ck_material_type where pid=p.id) childcount
+        from ck_material_type p
+        GROUP BY p.id
+        ORDER BY order_num  is null  ASC,order_num  ASC
+    </select>
+</mapper>

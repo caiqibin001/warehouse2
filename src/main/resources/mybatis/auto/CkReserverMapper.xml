@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.v2.mapper.auto.CkReserverMapper">
+  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.CkReserver">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="rfid" jdbcType="VARCHAR" property="rfid" />
+    <result column="box_no" jdbcType="INTEGER" property="boxNo" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="material_id" jdbcType="BIGINT" property="materialId" />
+    <result column="material_type" jdbcType="VARCHAR" property="materialType" />
+    <result column="material_name" jdbcType="VARCHAR" property="materialName" />
+    <result column="material_quantity" jdbcType="INTEGER" property="materialQuantity" />
+    <result column="out_order_id" jdbcType="BIGINT" property="outOrderId" />
+    <result column="warehouse_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+
+  <sql id="selectCkReserverVo">
+        select id, rfid, box_no, material_id, material_type, material_name, material_quantity, out_order_id, warehouse_name, create_by, create_time, update_by, update_time, remark, from ck_reserver
+   </sql>
+
+  <select id="selectCkReserverList" parameterType="com.fc.v2.model.auto.CkReserver" resultMap="BaseResultMap">
+    <include refid="selectCkReserverVo"/>
+    <where>
+        <if test="id != null "> and id = #{id}</if>
+        <if test="rfid != null  and rfid != ''"> and rfid = #{rfid}</if>
+        <if test="boxNo != null "> and box_no = #{boxNo}</if>
+        <if test="materialId != null "> and material_id = #{materialId}</if>
+        <if test="materialType != null  and materialType != ''"> and material_type = #{materialType}</if>
+        <if test="materialName != null  and materialName != ''"> and material_name = #{materialName}</if>
+        <if test="materialQuantity != null "> and material_quantity = #{materialQuantity}</if>
+        <if test="outOrderId != null "> and out_order_id = #{outOrderId}</if>
+        <if test="warehouseName != null  and warehouseName != ''"> and warehouse_name = #{warehouseName}</if>
+    </where>
+  </select>
+</mapper>

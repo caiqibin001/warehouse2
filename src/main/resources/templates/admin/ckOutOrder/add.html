@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('出库单新增')"/>
+</head>
+<body>
+<form class="layui-form">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">重要程度</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="orderLevel" autocomplete="off" placeholder="重要程度" class="layui-input">
+			                    </div>
+			                </div>
+									
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">出库事件</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="outEvent" autocomplete="off" placeholder="出库事件" class="layui-input">
+			                    </div>
+			                </div>
+									
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">是否完成</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="finished" autocomplete="off" placeholder="是否完成" class="layui-input">
+			                    </div>
+			                </div>
+									
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">是否全仓</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="alled" autocomplete="off" placeholder="是否全仓" class="layui-input">
+			                    </div>
+			                </div>
+									
+		
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="ckOutOrder-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form','laydate','jquery'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        let MODULE_PATH = rootPath+"/CkOutOrderController";
+
+
+        //保存
+        form.on('submit(ckOutOrder-save)', function (data) {
+        	let loader = layer.load();
+            $.ajax({
+                url: MODULE_PATH+'/add',
+                data: data.field,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded',
+                type: 'post',
+                success: function (result) {
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("ckOutOrder-table");
+                            layer.close(loader);
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                        layer.close(loader);
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

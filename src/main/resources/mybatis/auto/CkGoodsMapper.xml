@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.v2.mapper.auto.CkGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.fc.v2.model.auto.CkGoods">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="goods_row" jdbcType="VARCHAR" property="goodsRow" />
+    <result column="goods_cell" jdbcType="VARCHAR" property="goodsCell" />
+    <result column="goods_local" jdbcType="VARCHAR" property="goodsLocal" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="full" jdbcType="INTEGER" property="full" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+
+  <sql id="selectCkGoodsVo">
+        select id, goods_name, goods_no, goods_row, goods_cell, goods_local, position, create_by, create_time, update_by, update_time, remark, from ck_goods
+   </sql>
+
+  <select id="selectCkGoodsList" parameterType="com.fc.v2.model.auto.CkGoods" resultMap="BaseResultMap">
+    <include refid="selectCkGoodsVo"/>
+    <where>
+        <if test="id != null "> and id = #{id}</if>
+        <if test="goodsName != null  and goodsName != ''"> and goods_name = #{goodsName}</if>
+        <if test="goodsNo != null  and goodsNo != ''"> and goods_no = #{goodsNo}</if>
+        <if test="goodsRow != null  and goodsRow != ''"> and goods_row = #{goodsRow}</if>
+        <if test="goodsCell != null  and goodsCell != ''"> and goods_cell = #{goodsCell}</if>
+        <if test="goodsLocal != null  and goodsLocal != ''"> and goods_local = #{goodsLocal}</if>
+        <if test="position != null  and position != ''"> and position = #{position}</if>
+    </where>
+  </select>
+</mapper>

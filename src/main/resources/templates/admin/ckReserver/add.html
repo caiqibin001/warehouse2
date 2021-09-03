@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('战备物资新增')"/>
+</head>
+<body>
+<form class="layui-form">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">RFID<span style="color: red;">*</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="rfid" autocomplete="off" placeholder="RFID" class="layui-input">
+			                    </div>
+			                </div>
+									
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">箱号<span style="color: red;">*</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="boxNo" autocomplete="off" placeholder="箱号" class="layui-input">
+			                    </div>
+			                </div>
+
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">物料类别<span style="color: red;">*</label>
+			                    <div class="layui-input-block">
+									<ul id="selectParent" name="materialType" class="dtree" data-id="-1" ></ul>
+			                    </div>
+			                </div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">物料名称<span style="color: red;">*</span></label>
+								<div class="layui-input-block">
+									<select name="materialId" lay-filter="material_select" lay-verify="required" lay-search=""  id="material_select">
+									</select>
+								</div>
+							</div>
+											
+							<div class="layui-form-item">
+			                    <label class="layui-form-label">数量<span style="color: red;">*</label>
+			                    <div class="layui-input-block">
+			                        <input type="text" name="materialQuantity" autocomplete="off" placeholder="数量" class="layui-input">
+			                    </div>
+			                </div>
+
+		
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="ckReserver-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form','laydate','dtree','jquery'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+		let dtree = layui.dtree;
+        let MODULE_PATH = rootPath+"/CkReserverController";
+		dtree.renderSelect({
+			elem: "#selectParent",
+			url: rootPath+"/CkMaterialTypeController"+"/selectParent",
+			method: 'get',
+			selectInputName: {nodeId: "materialType"},
+			skin: "layui",
+			dataFormat: "list",
+			response: {treeId: "id", parentId: "pid", title: "name"},  //修改response中返回数据的定义
+			selectInitVal: "0"
+
+		});
+
+		// 绑定节点点击事件
+		dtree.on("node(selectParent)", function(obj) {
+			console.log(obj.param.nodeId)
+			$("#material_select").empty();
+			$("#material_select").html("<option></option>");
+			$.ajax({
+				type: 'get',
+				dataType: 'json',
+				url: rootPath+"/CkReserverController/getMaterial?typeId="+obj.param.nodeId,
+				success:function(data){
+					for (var i = 0; i < data.length; i++) {
+						$("#material_select").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
+					}
+					form.render('select');
+				}
+			})
+		});
+
+		/*dtree.click(dtree,id){
+			debugger;
+			$("#material_select").empty();
+			$("#material_select").html("<option></option>");
+			$.ajax({
+				type: 'get',
+				dataType: 'json',
+				url: rootPath+"/CkReserverController/getMaterial?typeId="+d,
+				success:function(data){
+					for (var i = 0; i < data.length; i++) {
+						$("#material_select").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
+					}
+					form.render('select');
+				}
+			})
+		}*/
+
+        //保存
+        form.on('submit(ckReserver-save)', function (data) {
+        	debugger
+        	let loader = layer.load();
+            $.ajax({
+                url: MODULE_PATH+'/add',
+                data: data.field,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded',
+                type: 'post',
+                success: function (result) {
+                    if (result.code==200) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("ckReserver-table");
+                            layer.close(loader);
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                        layer.close(loader);
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

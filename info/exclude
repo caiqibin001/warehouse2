@@ -1,0 +1,6 @@
+# File patterns to ignore; see `git help ignore` for more information.
+# Lines that start with '#' are comments.
+
+# GitFinder placeholder for git-deleted files.
+# Don't remove this line, it's needed for proper functioning of GitFinder.
+*.gitFinderDeleted
