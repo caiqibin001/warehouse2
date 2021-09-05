@@ -26,7 +26,9 @@ public class GoodsInfo implements Serializable {
 
     public static class GoodsRow{
         private String goodsRow;
-        private List<GoodsCell> goodsCells;
+        private List<GoodsCell> leftGoodsCells;
+        private List<GoodsCell> centerGoodsCells;
+        private List<GoodsCell> rightGoodsCells;
 
         public String getGoodsRow() {
             return goodsRow;
@@ -36,12 +38,28 @@ public class GoodsInfo implements Serializable {
             this.goodsRow = goodsRow;
         }
 
-        public List<GoodsCell> getGoodsCells() {
-            return goodsCells;
+        public List<GoodsCell> getLeftGoodsCells() {
+            return leftGoodsCells;
         }
 
-        public void setGoodsCells(List<GoodsCell> goodsCells) {
-            this.goodsCells = goodsCells;
+        public void setLeftGoodsCells(List<GoodsCell> leftGoodsCells) {
+            this.leftGoodsCells = leftGoodsCells;
+        }
+
+        public List<GoodsCell> getCenterGoodsCells() {
+            return centerGoodsCells;
+        }
+
+        public void setCenterGoodsCells(List<GoodsCell> centerGoodsCells) {
+            this.centerGoodsCells = centerGoodsCells;
+        }
+
+        public List<GoodsCell> getRightGoodsCells() {
+            return rightGoodsCells;
+        }
+
+        public void setRightGoodsCells(List<GoodsCell> rightGoodsCells) {
+            this.rightGoodsCells = rightGoodsCells;
         }
     }
     public static class GoodsCell{

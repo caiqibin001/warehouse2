@@ -1,0 +1,5 @@
+*.iml
+*.ini
+target/*
+.idea
+.git

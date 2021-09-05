@@ -9,9 +9,8 @@
         <relativePath/>
     </parent>
     <groupId>com.fc</groupId>
-    <artifactId>v2</artifactId>
+    <artifactId>warehouse2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>warehouse</name>
 	<packaging>jar</packaging>
 
     <properties>
