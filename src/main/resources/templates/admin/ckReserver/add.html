@@ -8,15 +8,7 @@
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-											
-							<div class="layui-form-item">
-			                    <label class="layui-form-label">RFID<span style="color: red;">*</label>
-			                    <div class="layui-input-block">
-			                        <input type="text" name="rfid" autocomplete="off" placeholder="RFID" class="layui-input">
-			                    </div>
-			                </div>
-									
-											
+
 							<div class="layui-form-item">
 			                    <label class="layui-form-label">箱号<span style="color: red;">*</label>
 			                    <div class="layui-input-block">
@@ -27,7 +19,7 @@
 							<div class="layui-form-item">
 			                    <label class="layui-form-label">物资类别<span style="color: red;">*</label>
 			                    <div class="layui-input-block">
-									<ul id="selectParent" name="materialType" class="dtree" data-id="-1" ></ul>
+									<ul id="selectParent" name="materialTypeId" class="dtree" data-id="-1" ></ul>
 			                    </div>
 			                </div>
 							<div class="layui-form-item">
@@ -73,7 +65,7 @@
 			elem: "#selectParent",
 			url: rootPath+"/CkMaterialTypeController"+"/selectParent",
 			method: 'get',
-			selectInputName: {nodeId: "materialType"},
+			selectInputName: {nodeId: "materialTypeId"},
 			skin: "layui",
 			dataFormat: "list",
 			response: {treeId: "id", parentId: "pid", title: "name"},  //修改response中返回数据的定义
@@ -118,7 +110,6 @@
 
         //保存
         form.on('submit(ckReserver-save)', function (data) {
-        	debugger
         	let loader = layer.load();
             $.ajax({
                 url: MODULE_PATH+'/add',

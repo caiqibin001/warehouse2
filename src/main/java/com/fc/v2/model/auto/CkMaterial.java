@@ -33,6 +33,7 @@ public class CkMaterial extends BaseEntity {
 
 	/** 物料类别 */
 	@ApiModelProperty(value = "物料类别关联ID")
+	@JsonSerialize(using = ToStringSerializer.class)
 	private Long typeId;
 
 	/** 物料类别 */

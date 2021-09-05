@@ -45,7 +45,7 @@ public class CkReserver extends BaseEntity {
 
 	/** 物料类别 */
 	@ApiModelProperty(value = "物料类别管理ID")
-	private String materialTypeId;
+	private Long materialTypeId;
 
 	/** 物料类别 */
 	@ApiModelProperty(value = "物料类别")
@@ -75,11 +75,11 @@ public class CkReserver extends BaseEntity {
 		this.status = status;
 	}
 
-	public String getMaterialTypeId() {
+	public Long getMaterialTypeId() {
 		return materialTypeId;
 	}
 
-	public void setMaterialTypeId(String materialTypeId) {
+	public void setMaterialTypeId(Long materialTypeId) {
 		this.materialTypeId = materialTypeId;
 	}
 

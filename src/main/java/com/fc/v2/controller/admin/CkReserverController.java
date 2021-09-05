@@ -48,8 +48,6 @@ public class CkReserverController extends BaseController {
     private String prefix = "admin/ckReserver";
 
     @Autowired
-    private RestTemplate restTemplate;
-    @Autowired
     private ICkReserverService ckReserverService;
     @Autowired
     private ICkMaterialService ckMaterialService;
@@ -62,18 +60,7 @@ public class CkReserverController extends BaseController {
         return dataTable(ckReserverService.selectCkReserverList(queryWrapper).get(0));
     }
 
-    @GetMapping("/getReserver")
-    @ResponseBody
-    public ResultTable getReserver(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("msg_data","1/192.168.222.100");
-        map.put("msg_type",63);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Content-Type","application/json");
-        HttpEntity requestEntity = new HttpEntity(map,httpHeaders);
-        RrfidVo rfidVo = restTemplate.postForObject("http://192.168.222.221:10090/midwareevent", requestEntity,RrfidVo.class);
-        return dataTable(rfidVo);
-    }
+
 
     @ApiOperation(value = "确认入库", notes = "确认入库")
     @PostMapping("/saveByRfid")
@@ -168,7 +155,7 @@ public class CkReserverController extends BaseController {
     @PostMapping("/add")
     @RequiresPermissions("system:ckReserver:add")
     @ResponseBody
-    public AjaxResult add(CkReserver ckReserver) {
+    public AjaxResult add(CkReserver ckReserver) throws Exception {
 		return toAjax(ckReserverService.insertCkReserver(ckReserver));
     }
 

@@ -24,15 +24,15 @@
 		                        <input th:value="*{name}" type="text" name="name" autocomplete="off" placeholder="物料名称" class="layui-input">
 		                    </div>
 		                </div>
-					                
-											
-										
+
+
+
 						<div class="layui-form-item">
-		                    <label class="layui-form-label">物料类别</label>
-		                    <div class="layui-input-block">
-		                        <input th:value="*{typeId}" type="text" name="typeId" autocomplete="off" placeholder="物料类别" class="layui-input">
-		                    </div>
-		                </div>
+							<label class="layui-form-label">物料类别</label>
+							<div class="layui-input-block">
+								<ul id="selectParent" name="typeId" class="dtree" data-id="-1"></ul>
+							</div>
+						</div>
 					                
 											
 										
@@ -76,11 +76,21 @@
 </form>
 <th:block th:include="include :: footer"/>
 <script>
-    layui.use(['form','laydate','jquery'], function () {
+    layui.use(['form','laydate','jquery','dtree'], function () {
         let form = layui.form;
         let $ = layui.jquery;
+		let dtree = layui.dtree;
         let MODULE_PATH = rootPath+"/CkMaterialController";
-		
+		dtree.renderSelect({
+			elem: "#selectParent",
+			url: rootPath+"/CkMaterialTypeController"+"/selectParent",
+			method: 'get',
+			selectInputName: {nodeId: "typeId"},
+			skin: "layui",
+			dataFormat: "list",
+			response: {treeId: "id", parentId: "pid", title: "name"},  //修改response中返回数据的定义
+			selectInitVal: '[[${CkMaterial.typeId}]]'
+		});
 
         form.on('submit(ckMaterial-update)', function (data) {
         	let loader = layer.load();

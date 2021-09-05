@@ -44,7 +44,7 @@ public interface ICkReserverService extends IService<CkReserver>{
 	 * @param ckReserver
 	 * @return 结果
 	 */
-	public int insertCkReserver(CkReserver ckReserver);
+	public int insertCkReserver(CkReserver ckReserver) throws Exception;
 
 	/**
 	 * 修改战备物资

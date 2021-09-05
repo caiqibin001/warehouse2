@@ -47,7 +47,7 @@
 <script type="text/html" id="ckReserver-toolbar">
     <button shiro:hasPermission="system:ckReserver:add" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
-		 新增
+		 初始化物资
     </button>
     <button shiro:hasPermission="system:ckReserver:remove" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
@@ -109,7 +109,7 @@
                {title: '物料类别', field: 'materialType', align: 'center'},
                {title: '物料名称', field: 'materialName', align: 'center'},
                {title: '数量', field: 'materialQuantity', align: 'center'},
-               {title: '库位', field: 'warehouseName', align: 'center'},
+               {title: '库位', field: 'goodsName', align: 'center'},
                {title: '状态', field: 'status', align: 'center'},
                {title: '操作', toolbar: '#ckReserver-bar', align: 'center'}
             ]
@@ -161,7 +161,7 @@
         window.add = function () {
             layer.open({
                 type: 2,
-                title: '新增',
+                title: '初始化物资',
                 shade: 0.1,
                 area: ['500px', '500px'],
                 content: MODULE_PATH + 'add'

@@ -3,8 +3,10 @@ package com.fc.v2.service.impl;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.fc.v2.mapper.auto.CkGoodsMapper;
+import com.fc.v2.mapper.auto.CkMaterialMapper;
 import com.fc.v2.mapper.auto.CkMaterialTypeMapper;
 import com.fc.v2.model.auto.*;
 import com.fc.v2.service.ICkReserverService;
@@ -19,6 +21,8 @@ import org.slf4j.LoggerFactory;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 /**
  * 战备物资Service业务层处理
@@ -37,6 +41,8 @@ public class CkReserverServiceImpl extends ServiceImpl<CkReserverMapper, CkReser
     private CkGoodsMapper ckGoodsMapper;
     @Autowired
     private CkMaterialTypeMapper ckMaterialTypeMapper;
+    @Autowired
+    private CkMaterialMapper ckMaterialMapper;
 
                                                                                                                                                                                             /**
      * 查询战备物资
@@ -58,9 +64,16 @@ public class CkReserverServiceImpl extends ServiceImpl<CkReserverMapper, CkReser
     @Override
     public List<CkReserver> selectCkReserverList(Wrapper<CkReserver> queryWrapper) {
         List<CkReserver> reserverList = this.baseMapper.selectList(queryWrapper);
-//        reserverList.forEach(ckReserver -> {
-//            ckReserver.setMaterialType(ckMaterialTypeMapper.selectById(ckReserver.getMaterialType()));
-//        });
+        reserverList.forEach(ckReserver -> {
+            if (!ObjectUtils.isEmpty(ckReserver.getMaterialTypeId())) {
+                ckReserver.setMaterialType(ckMaterialTypeMapper.selectById(ckReserver.getMaterialTypeId()).getName());
+            }
+            if(!ObjectUtils.isEmpty(ckReserver.getMaterialId())) {
+                ckReserver.setMaterialName(ckMaterialMapper.selectById(ckReserver.getMaterialId()).getName());
+            }
+
+        });
+
         return reserverList;
     }
 
@@ -85,15 +98,22 @@ public class CkReserverServiceImpl extends ServiceImpl<CkReserverMapper, CkReser
      * @return 结果
      */
     @Override
-    public int insertCkReserver(CkReserver ckReserver) {
+    @Transactional
+    public int insertCkReserver(CkReserver ckReserver) throws Exception{
         ckReserver.setStatus(Status.ING);
 
         QueryWrapper<CkGoods> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByAsc("goods_name");
-        queryWrapper.eq("full",false);
+        queryWrapper.eq("full",0);
         queryWrapper.last("limit 1");
         List<CkGoods> goodsList = ckGoodsMapper.selectList(queryWrapper);
-        ckReserver.setGoodsName(goodsList.get(0).getGoodsName());
+        if (ObjectUtils.isEmpty(goodsList)) {
+            throw new NullPointerException("库位已满，请先添加仓库");
+        }
+        CkGoods goods = goodsList.get(0);
+        ckReserver.setGoodsName(goods.getGoodsName());
+        goods.setFull(1);//已入库
+        ckGoodsMapper.updateById(goods);
         return this.baseMapper.insert(ckReserver);
     }
 

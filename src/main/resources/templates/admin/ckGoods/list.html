@@ -40,6 +40,10 @@
         <i class="layui-icon layui-icon-delete"></i>
 		删除
     </button>
+    <button class="pear-btn pear-btn-danger pear-btn-md" lay-event="searchPng">
+        <i class="layui-icon layui-icon-searchPng"></i>
+        查看仓库图
+    </button>
 </script>
 
 <script type="text/html" id="ckGoods-bar">
@@ -132,6 +136,8 @@
                 window.refresh();
             } else if (obj.event === 'batchRemove') {
                 window.batchRemove(obj);
+            } else if (obj.event === 'search-png') {
+                window.searchPng();
             }
         });
 
@@ -153,7 +159,7 @@
             });
         }
         //添加
-        window.add = function () {
+        window.searchPng = function () {
             layer.open({
                 type: 2,
                 title: '仓位图',
