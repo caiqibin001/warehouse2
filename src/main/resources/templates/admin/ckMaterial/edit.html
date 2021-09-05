@@ -44,9 +44,15 @@
 		                </div>
 
 						<div class="layui-form-item">
-							<label class="layui-form-label">描述</label>
+							<label class="layui-form-label">规格</label>
 							<div class="layui-input-block">
 								<input th:value="*{remark}" type="text" name="remark" autocomplete="off" placeholder="描述" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">数量</label>
+							<div class="layui-input-block">
+								<input type="number" name="quantit" lay-verify="quantit" autocomplete="off" value="1" class="layui-input">
 							</div>
 						</div>
 					                

@@ -7,6 +7,7 @@
     <result column="box_no" jdbcType="INTEGER" property="boxNo" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="material_id" jdbcType="BIGINT" property="materialId" />
+    <result column="material_type_id" jdbcType="BIGINT" property="materialTypeId" />
     <result column="material_type" jdbcType="VARCHAR" property="materialType" />
     <result column="material_name" jdbcType="VARCHAR" property="materialName" />
     <result column="material_quantity" jdbcType="INTEGER" property="materialQuantity" />

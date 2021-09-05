@@ -5,14 +5,13 @@ import java.util.Arrays;
 import java.util.Map;
 
 import com.fc.v2.mapper.auto.CkGoodsMapper;
-import com.fc.v2.model.auto.CkGoods;
-import com.fc.v2.model.auto.Status;
+import com.fc.v2.mapper.auto.CkMaterialTypeMapper;
+import com.fc.v2.model.auto.*;
 import com.fc.v2.service.ICkReserverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fc.v2.common.support.ConvertUtil;
 import com.fc.v2.mapper.auto.CkReserverMapper;
-import com.fc.v2.model.auto.CkReserver;
 import cn.hutool.core.bean.BeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +35,9 @@ public class CkReserverServiceImpl extends ServiceImpl<CkReserverMapper, CkReser
     private CkReserverMapper ckReserverMapper;
     @Autowired
     private CkGoodsMapper ckGoodsMapper;
+    @Autowired
+    private CkMaterialTypeMapper ckMaterialTypeMapper;
+
                                                                                                                                                                                             /**
      * 查询战备物资
      *
@@ -55,7 +57,11 @@ public class CkReserverServiceImpl extends ServiceImpl<CkReserverMapper, CkReser
      */
     @Override
     public List<CkReserver> selectCkReserverList(Wrapper<CkReserver> queryWrapper) {
-        return this.baseMapper.selectList(queryWrapper);
+        List<CkReserver> reserverList = this.baseMapper.selectList(queryWrapper);
+//        reserverList.forEach(ckReserver -> {
+//            ckReserver.setMaterialType(ckMaterialTypeMapper.selectById(ckReserver.getMaterialType()));
+//        });
+        return reserverList;
     }
 
     /**

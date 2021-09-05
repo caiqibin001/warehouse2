@@ -39,13 +39,17 @@ public class CkReserver extends BaseEntity {
 	@ApiModelProperty(value = "物料关联ID")
 	private Long materialId;
 
-	/** 物料类别 */
-	@ApiModelProperty(value = "物料类别")
-	private String materialType;
-
 	/** 物料名称 */
 	@ApiModelProperty(value = "物料名称")
 	private String materialName;
+
+	/** 物料类别 */
+	@ApiModelProperty(value = "物料类别管理ID")
+	private String materialTypeId;
+
+	/** 物料类别 */
+	@ApiModelProperty(value = "物料类别")
+	private String materialType;
 
 	/** 数量 */
 	@ApiModelProperty(value = "数量")
@@ -69,6 +73,14 @@ public class CkReserver extends BaseEntity {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public String getMaterialTypeId() {
+		return materialTypeId;
+	}
+
+	public void setMaterialTypeId(String materialTypeId) {
+		this.materialTypeId = materialTypeId;
 	}
 
 	@JsonProperty("id")

@@ -46,6 +46,9 @@ public class CkMaterial extends BaseEntity {
 	/** 是否可见 */
 	@ApiModelProperty(value = "是否可见")
 	private Integer visible;
+
+	@ApiModelProperty(value = "数量")
+	private Integer quantit;
 	
 	@JsonProperty("id")
 	public Long getId() {
@@ -98,6 +101,14 @@ public class CkMaterial extends BaseEntity {
 
 	public CkMaterial() {
 	    super();
+	}
+
+	public Integer getQuantit() {
+		return quantit;
+	}
+
+	public void setQuantit(Integer quantit) {
+		this.quantit = quantit;
 	}
 
 	@Override

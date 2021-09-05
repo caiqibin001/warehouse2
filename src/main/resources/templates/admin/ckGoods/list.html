@@ -50,9 +50,6 @@
     </button>
 </script>
 
-
-																																													
-
 <script type="text/javascript" th:inline="javascript">
 	
 	window.selectDictLabel=function(datas, value) {
@@ -93,12 +90,13 @@
         let cols = [
             [
                {type: 'checkbox'},
-    	               {title: '仓库名称', field: 'goodsName', align: 'center'},
-    	               {title: '库', field: 'goodsNo', align: 'center'},
-    	               {title: '排', field: 'goodsRow', align: 'center'},
-    	               {title: '格', field: 'goodsCell', align: 'center'},
-    	               {title: '位', field: 'goodsLocal', align: 'center'},
-                   {title: '操作', toolbar: '#ckGoods-bar', align: 'center'}
+               {title: '仓库名称', field: 'goodsName', align: 'center'},
+               {title: '库', field: 'goodsNo', align: 'center'},
+               {title: '排', field: 'goodsRow', align: 'center'},
+               {title: '格', field: 'goodsCell', align: 'center'},
+               {title: '位', field: 'goodsLocal', align: 'center'},
+               {title: '是否有货', field: 'full', align: 'center'},
+               {title: '操作', toolbar: '#ckGoods-bar', align: 'center'}
             ]
         ]
 
@@ -152,6 +150,16 @@
                 shade: 0.1,
                 area: ['500px', '500px'],
                 content: MODULE_PATH + 'add'
+            });
+        }
+        //添加
+        window.add = function () {
+            layer.open({
+                type: 2,
+                title: '仓位图',
+                shade: 0.1,
+                area: ['500px', '500px'],
+                content: MODULE_PATH + 'goodsInfo'
             });
         }
         //修改

@@ -8,6 +8,7 @@
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="visible" jdbcType="INTEGER" property="visible" />
+      <result column="quantit" jdbcType="INTEGER" property="quantit" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />

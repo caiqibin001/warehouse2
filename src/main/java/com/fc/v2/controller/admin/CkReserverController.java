@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
+import com.fc.v2.model.VO.RrfidVo;
 import com.fc.v2.model.auto.CkMaterial;
 import com.fc.v2.model.auto.Status;
 import com.fc.v2.model.auto.TSysCity;
@@ -19,12 +20,19 @@ import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 战备物资 Controller
@@ -40,6 +48,8 @@ public class CkReserverController extends BaseController {
     private String prefix = "admin/ckReserver";
 
     @Autowired
+    private RestTemplate restTemplate;
+    @Autowired
     private ICkReserverService ckReserverService;
     @Autowired
     private ICkMaterialService ckMaterialService;
@@ -50,6 +60,19 @@ public class CkReserverController extends BaseController {
         QueryWrapper<CkReserver> queryWrapper = new QueryWrapper<CkReserver>();
         queryWrapper.eq("rfid",rfid);
         return dataTable(ckReserverService.selectCkReserverList(queryWrapper).get(0));
+    }
+
+    @GetMapping("/getReserver")
+    @ResponseBody
+    public ResultTable getReserver(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("msg_data","1/192.168.222.100");
+        map.put("msg_type",63);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Content-Type","application/json");
+        HttpEntity requestEntity = new HttpEntity(map,httpHeaders);
+        RrfidVo rfidVo = restTemplate.postForObject("http://192.168.222.221:10090/midwareevent", requestEntity,RrfidVo.class);
+        return dataTable(rfidVo);
     }
 
     @ApiOperation(value = "确认入库", notes = "确认入库")
@@ -101,7 +124,7 @@ public class CkReserverController extends BaseController {
             queryWrapper.like("status", tablepar.getSearchText());
         }
 
-        queryWrapper.orderByDesc("createTime");
+        queryWrapper.orderByDesc("update_time","create_time");
 
 
         PageHelper.startPage(tablepar.getPage(), tablepar.getLimit());

@@ -52,7 +52,7 @@ public class CkGoods extends BaseEntity {
 	private String position;
 
 	@ApiModelProperty(value = "是否有货")
-	private Boolean full;
+	private Integer full;
 	
 	@JsonProperty("id")
 	public Long getId() {
@@ -112,11 +112,11 @@ public class CkGoods extends BaseEntity {
 	}
 
 	@JsonProperty("full")
-	public Boolean getFull() {
+	public Integer getFull() {
 		return full;
 	}
 
-	public void setFull(Boolean full) {
+	public void setFull(Integer full) {
 		this.full = full;
 	}
 

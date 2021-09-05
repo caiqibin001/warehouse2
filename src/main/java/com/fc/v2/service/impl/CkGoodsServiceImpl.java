@@ -155,63 +155,78 @@ public class CkGoodsServiceImpl extends ServiceImpl<CkGoodsMapper, CkGoods> impl
                 .map(goods->goods.getGoodsRow()).distinct()
                 .collect(Collectors.toList());
         List<GoodsInfo.GoodsRow> goodsRows = new ArrayList<>(goodsRowList.size());
-        goodsRowList.forEach(row->{
-            GoodsInfo.GoodsRow goodsRow = new GoodsInfo.GoodsRow();
-            goodsRow.setGoodsRow(row);
-            List<String> goodsCellList = goodsList.stream()
-                    .filter(goods -> goods.getGoodsNo().equals(no) && goods.getGoodsRow().equals(row))
-                    .map(goods->goods.getGoodsCell()).distinct()
-                    .collect(Collectors.toList());
-            List<GoodsInfo.GoodsCell> goodsCells = new ArrayList<>(goodsCellList.size());
-            goodsCellList.forEach(cell->{
-                GoodsInfo.GoodsCell goodsCell = new GoodsInfo.GoodsCell();
-                goodsCell.setGoodsCell(cell);
-
-                List<String> goodsLocalList = goodsList.stream()
-                        .filter(goods -> goods.getGoodsNo().equals(no)
-                                && goods.getGoodsRow().equals(row)
-                                && goods.getGoodsCell().equals(cell))
-                        .map(goods->goods.getGoodsLocal()).distinct()
-                        .collect(Collectors.toList());
-                List<GoodsInfo.GoodsLocal> goodsLocals = new ArrayList<>(goodsLocalList.size());
-                goodsLocalList.forEach(local->{
-
-                    List<CkGoods> ckGoodsList = goodsList.stream()
-                            .filter(goods -> goods.getGoodsNo().equals(no)
-                                    && goods.getGoodsRow().equals(row)
-                                    && goods.getGoodsCell().equals(cell))
-                            .collect(Collectors.toList());
-
-                    CkGoods ckGoods;
-                    if (ObjectUtils.isEmpty(ckGoodsList)) {
-                        String goodsName = new StringBuffer(no).append("-")
-                                .append(cell).append("-")
-                                .append(row).append("-")
-                                .append(local).toString();
-                        QueryWrapper<CkGoods> queryWrapper = new QueryWrapper<>();
-                        queryWrapper.eq("goods_name",goodsName);
-                        ckGoods = this.getOne(queryWrapper);
-                    } else {
-                        ckGoods = ckGoodsList.get(0);
-                    }
-                    if (ObjectUtils.isEmpty(ckGoods)) {
-                        return;
-                    }
-                    GoodsInfo.GoodsLocal goodsLocal = new GoodsInfo.GoodsLocal();
-                    goodsLocal.setGoodsLocal(ckGoods.getGoodsName());
-                    goodsLocal.setFull(ckGoods.getFull());
-                    goodsLocals.add(goodsLocal);
-                });
-                goodsCell.setGoodsLocals(goodsLocals);
-                goodsCells.add(goodsCell);
-
-            });
-            goodsRow.setGoodsCells(goodsCells);
-            goodsRows.add(goodsRow);
-        });
+        GoodsInfo.GoodsRow goodsRow = new GoodsInfo.GoodsRow();
+        for (String row : goodsRowList) {
+            if (Integer.valueOf(row) % 3 == 1) {
+                List<GoodsInfo.GoodsCell> leftGoodsCells = getGoodsCells(goodsList, no, row);
+                goodsRow.setLeftGoodsCells(leftGoodsCells);
+                goodsRow.setGoodsRow(row);
+            } else if (Integer.valueOf(row) % 3 == 2) {
+                List<GoodsInfo.GoodsCell> centerGoodsCells = getGoodsCells(goodsList, no, row);
+                goodsRow.setCenterGoodsCells(centerGoodsCells);
+            } else {
+                List<GoodsInfo.GoodsCell> rightGoodsCells = getGoodsCells(goodsList, no, row);
+                goodsRow.setRightGoodsCells(rightGoodsCells);
+                goodsRows.add(goodsRow);
+                goodsRow = new GoodsInfo.GoodsRow();
+            }
+        }
 
         goodsInfo.setGoodsRows(goodsRows);
         return goodsInfo;
+    }
+
+    private List<GoodsInfo.GoodsCell> getGoodsCells(List<CkGoods> goodsList, String no, String row) {
+        List<String> goodsCellList = goodsList.stream()
+                .filter(goods -> goods.getGoodsNo().equals(no) && goods.getGoodsRow().equals(row))
+                .map(goods->goods.getGoodsCell()).distinct()
+                .collect(Collectors.toList());
+
+        List<GoodsInfo.GoodsCell> goodsCells = new ArrayList<>(goodsCellList.size());
+        goodsCellList.forEach(cell->{
+            GoodsInfo.GoodsCell goodsCell = new GoodsInfo.GoodsCell();
+            goodsCell.setGoodsCell(cell);
+
+            List<String> goodsLocalList = goodsList.stream()
+                    .filter(goods -> goods.getGoodsNo().equals(no)
+                            && goods.getGoodsRow().equals(row)
+                            && goods.getGoodsCell().equals(cell))
+                    .map(goods->goods.getGoodsLocal()).distinct()
+                    .collect(Collectors.toList());
+            List<GoodsInfo.GoodsLocal> goodsLocals = new ArrayList<>(goodsLocalList.size());
+            goodsLocalList.forEach(local->{
+
+                List<CkGoods> ckGoodsList = goodsList.stream()
+                        .filter(goods -> goods.getGoodsNo().equals(no)
+                                && goods.getGoodsRow().equals(row)
+                                && goods.getGoodsCell().equals(cell))
+                        .collect(Collectors.toList());
+
+                CkGoods ckGoods;
+                if (ObjectUtils.isEmpty(ckGoodsList)) {
+                    String goodsName = new StringBuffer(no).append("-")
+                            .append(cell).append("-")
+                            .append(row).append("-")
+                            .append(local).toString();
+                    QueryWrapper<CkGoods> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.eq("goods_name",goodsName);
+                    ckGoods = this.getOne(queryWrapper);
+                } else {
+                    ckGoods = ckGoodsList.get(0);
+                }
+                if (ObjectUtils.isEmpty(ckGoods)) {
+                    return;
+                }
+                GoodsInfo.GoodsLocal goodsLocal = new GoodsInfo.GoodsLocal();
+                goodsLocal.setGoodsLocal(ckGoods.getGoodsName());
+                goodsLocal.setFull(ObjectUtils.isEmpty(ckGoods.getFull())? false : ckGoods.getFull() == 1);
+                goodsLocals.add(goodsLocal);
+            });
+            goodsCell.setGoodsLocals(goodsLocals);
+            goodsCells.add(goodsCell);
+
+        });
+        return goodsCells;
     }
 
     @Override
@@ -220,22 +235,39 @@ public class CkGoodsServiceImpl extends ServiceImpl<CkGoodsMapper, CkGoods> impl
         names.forEach(name->{
             String [] nameStr = name.split("-");
             List<GoodsInfo.GoodsRow> rowList = goodsInfo.getGoodsRows().stream()
-                    .filter(row->nameStr[1].equals(row.getGoodsRow()))
+                    .filter(row->(Integer.valueOf(nameStr[1]) > 3 ? Integer.valueOf(nameStr[1])/3 : Integer.valueOf(nameStr[1]))
+                            == Integer.valueOf(row.getGoodsRow()))
                     .collect(Collectors.toList());
             rowList.forEach(row->{
-                List<GoodsInfo.GoodsCell> cellList = row.getGoodsCells().stream()
+                List<GoodsInfo.GoodsCell> leftCellList = row.getLeftGoodsCells().stream()
                         .filter(cell->nameStr[2].equals(cell.getGoodsCell()))
                         .collect(Collectors.toList());
-                cellList.forEach(cell->{
-                    List<GoodsInfo.GoodsLocal> localList = cell.getGoodsLocals().stream()
-                            .filter(local->nameStr[3].equals(local.getGoodsLocal()))
-                            .collect(Collectors.toList());
-                    localList.forEach(local->{
-                        local.setCheck(true);
-                    });
-                });
+
+                List<GoodsInfo.GoodsCell> centerCellList = row.getCenterGoodsCells().stream()
+                        .filter(cell->nameStr[2].equals(cell.getGoodsCell()))
+                        .collect(Collectors.toList());
+
+                List<GoodsInfo.GoodsCell> rightCellList = row.getRightGoodsCells().stream()
+                        .filter(cell->nameStr[2].equals(cell.getGoodsCell()))
+                        .collect(Collectors.toList());
+
+                setCheck(leftCellList, nameStr[3]);
+                setCheck(centerCellList, nameStr[3]);
+                setCheck(rightCellList, nameStr[3]);
             });
         });
         return goodsInfo;
+    }
+
+    private void setCheck(List<GoodsInfo.GoodsCell> leftCellList, String s) {
+        leftCellList.forEach(cell -> {
+
+            List<GoodsInfo.GoodsLocal> localList = cell.getGoodsLocals().stream()
+                    .filter(local -> s.equals(local.getGoodsLocal().split("-")[local.getGoodsLocal().split("-").length - 1]))
+                    .collect(Collectors.toList());
+            localList.forEach(local -> {
+                local.setCheck(true);
+            });
+        });
     }
 }
