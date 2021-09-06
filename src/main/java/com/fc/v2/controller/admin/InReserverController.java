@@ -7,6 +7,7 @@ import com.fc.v2.mapper.auto.CkReserverMapper;
 import com.fc.v2.mapper.auto.TSysDictDataMapper;
 import com.fc.v2.model.VO.RrfidVo;
 import com.fc.v2.model.auto.CkReserver;
+import com.fc.v2.model.auto.Status;
 import com.fc.v2.model.auto.TSysDictData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,10 +37,10 @@ public class InReserverController extends BaseController {
     private RestTemplate restTemplate;
     @Autowired
     private CkReserverMapper ckReserverMapper;
-
     @Autowired
     private TSysDictDataMapper tSysDictDataMapper;
 
+    //读rfid的缓存区，待入库的容器
     private volatile static List<CkReserver> inReserverList;
     //单例构建缓存
     public static List<CkReserver> getInReserverList() {
@@ -55,27 +56,11 @@ public class InReserverController extends BaseController {
         return inReserverList;
     }
 
-    public List<String> getInReaderNameList() {
-        QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("dictType","inReaderNames");
-        List<TSysDictData> tSysDictDataList = tSysDictDataMapper.selectList(queryWrapper);
-        List<String> list = tSysDictDataList.stream().map(tSysDictData->tSysDictData.getDictValue()).collect(Collectors.toList());
-        if (ObjectUtils.isEmpty(list)) {
-            list = new ArrayList<>(1);
-            list.add("1/192.168.222.100");
-        }
-        return list;
-    }
-
-    public String getInReaderURL() {
-        String inReaderURL = "http://192.168.222.221:10090/midwareevent";
-        QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("dictType","inReaderURL");
-        TSysDictData tSysDictData = tSysDictDataMapper.selectOne(queryWrapper);
-        inReaderURL = tSysDictData.getDictValue();
-        return inReaderURL;
-    }
-
+    /**
+     * 调用入库页面，初始化 入库读卡器
+     * @param model
+     * @return
+     */
     @ApiOperation(value = "入库页面", notes = "入库页面")
     @GetMapping("/in")
     @RequiresPermissions("system:ckReserver:in")
@@ -100,14 +85,26 @@ public class InReserverController extends BaseController {
         return prefix + "/in";
     }
 
+    /**
+     * 300毫秒调用一次刷新此页面获取最新数据
+     * @return
+     */
     @ApiOperation(value = "分页跳转", notes = "分页跳转")
     @GetMapping("/inReserverlist")
     @RequiresPermissions("system:ckReserver:inReserverlist")
     @ResponseBody
     public ResultTable getInReserverVO() {
-        return dataTable(InReserverController.getInReserverList());
+        getInReserver();
+        Map map = new HashMap();
+        map.put("inReserverList",InReserverController.getInReserverList());
+        List<String> goodsNameList = InReserverController.getInReserverList().stream().map(reserver -> reserver.getGoodsName()).collect(Collectors.toList());
+        map.put("goodsNameList",goodsNameList);
+        return dataTable(map);
     }
 
+    /**
+     * 查询rfid刷入缓存
+     */
     public void getInReserver(){
         getInReaderNameList().forEach(inReaderName -> {
             RrfidVo rfidVo = getRrfidVo(inReaderName,getInReaderURL());
@@ -115,8 +112,12 @@ public class InReserverController extends BaseController {
                 rfidVo.getMsg_data().forEach(data -> {
                     QueryWrapper<CkReserver> queryWrapper = new QueryWrapper<>();
                     queryWrapper.eq("rfid",data.getEpc());
+                    //todo 状态
+                    queryWrapper.eq("status", Status.ING);
                     CkReserver ckReserver = ckReserverMapper.selectOne(queryWrapper);
-                    InReserverController.getInReserverList().add(ckReserver);
+                    if (!ObjectUtils.isEmpty(ckReserver)) {
+                        InReserverController.getInReserverList().add(ckReserver);
+                    }
                 });
             }
         });
@@ -132,5 +133,32 @@ public class InReserverController extends BaseController {
         return restTemplate.postForObject(inReaderURL, requestEntity,RrfidVo.class);
     }
 
+    /**
+     * 从数据字典获取读卡器名称列表
+     * @return
+     */
+    public List<String> getInReaderNameList() {
+        QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("dictType","inReaderNames");
+        List<TSysDictData> tSysDictDataList = tSysDictDataMapper.selectList(queryWrapper);
+        List<String> list = tSysDictDataList.stream().map(tSysDictData->tSysDictData.getDictValue()).collect(Collectors.toList());
+        if (ObjectUtils.isEmpty(list)) {
+            list = new ArrayList<>(1);
+            list.add("1/192.168.222.100");
+        }
+        return list;
+    }
 
+    /**
+     * 获取读卡器地址，读取rfid使用
+     * @return
+     */
+    public String getInReaderURL() {
+        String inReaderURL = "http://192.168.222.221:10090/midwareevent";
+        QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("dictType","readerURL");
+        TSysDictData tSysDictData = tSysDictDataMapper.selectOne(queryWrapper);
+        inReaderURL = tSysDictData.getDictValue();
+        return inReaderURL;
+    }
 }

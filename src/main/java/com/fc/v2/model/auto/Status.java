@@ -2,6 +2,7 @@ package com.fc.v2.model.auto;
 
 public enum Status {
     ING("待入库"),
+    OUTING("待出库"),
     IN("在库"),
     OUT("出库");
 
