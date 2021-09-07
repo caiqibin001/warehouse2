@@ -121,6 +121,13 @@ public class InReserverController extends BaseController {
                 });
             }
         });
+        //todo 如果没有入库的标签，暂时mock将要入库的数据
+        if (ObjectUtils.isEmpty(InReserverController.getInReserverList())) {
+            QueryWrapper<CkReserver> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("status", Status.ING);
+            List<CkReserver> ckReserverList = ckReserverMapper.selectList(queryWrapper);
+            InReserverController.getInReserverList().addAll(ckReserverList);
+        }
     }
 
     private RrfidVo getRrfidVo(String inReaderName, String inReaderURL) {
