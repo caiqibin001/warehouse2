@@ -1,4 +1,4 @@
-﻿/*
+/*
  Navicat Premium Data Transfer
 
  Source Server         : localhost
@@ -11,7 +11,7 @@
  Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 04/09/2021 23:10:07
+ Date: 07/09/2021 12:29:10
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,7 @@ CREATE TABLE `ck_goods` (
   `remark` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '备注',
   `full` tinyint(1) unsigned zerofill DEFAULT NULL COMMENT '是否存放',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1431948815375278203 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1431948815375278323 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of ck_goods
@@ -137,16 +137,16 @@ INSERT INTO `ck_goods` VALUES (1431948815375278174, '1-07-03-4', '1', '07', '03'
 INSERT INTO `ck_goods` VALUES (1431948815375278175, '1-07-04-1', '1', '07', '04', '1', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278176, '1-07-04-2', '1', '07', '04', '2', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278177, '1-07-04-3', '1', '07', '04', '3', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
-INSERT INTO `ck_goods` VALUES (1431948815375278178, '1-07-04-4', '1', '07', '04', '4', NULL, '', '2021-09-04 14:26:09', '', '2021-09-04 14:26:09', NULL, 0);
+INSERT INTO `ck_goods` VALUES (1431948815375278178, '1-07-04-4', '1', '07', '04', '4', NULL, '', '2021-09-04 14:26:09', '', '2021-09-04 14:26:09', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278179, '1-08-01-1', '1', '08', '01', '1', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278180, '1-08-01-2', '1', '08', '01', '2', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
-INSERT INTO `ck_goods` VALUES (1431948815375278181, '1-08-01-3', '1', '08', '01', '3', NULL, '', '2021-09-04 14:26:14', '', '2021-09-04 14:26:14', NULL, 0);
+INSERT INTO `ck_goods` VALUES (1431948815375278181, '1-08-01-3', '1', '08', '01', '3', NULL, '', '2021-09-04 14:26:14', '', '2021-09-04 14:26:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278182, '1-08-01-4', '1', '08', '01', '4', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278183, '1-08-02-1', '1', '08', '02', '1', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278184, '1-08-02-2', '1', '08', '02', '2', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278185, '1-08-02-3', '1', '08', '02', '3', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278186, '1-08-02-4', '1', '08', '02', '4', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
-INSERT INTO `ck_goods` VALUES (1431948815375278187, '1-09-01-1', '1', '09', '01', '1', NULL, '', '2021-09-04 14:26:10', '', '2021-09-04 14:26:10', NULL, 0);
+INSERT INTO `ck_goods` VALUES (1431948815375278187, '1-09-01-1', '1', '09', '01', '1', NULL, '', '2021-09-04 14:26:10', '', '2021-09-04 14:26:10', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278188, '1-09-01-2', '1', '09', '01', '2', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278189, '1-09-01-3', '1', '09', '01', '3', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278190, '1-09-01-4', '1', '09', '01', '4', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
@@ -162,6 +162,126 @@ INSERT INTO `ck_goods` VALUES (1431948815375278199, '1-09-04-1', '1', '09', '04'
 INSERT INTO `ck_goods` VALUES (1431948815375278200, '1-09-04-2', '1', '09', '04', '2', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278201, '1-09-04-3', '1', '09', '04', '3', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
 INSERT INTO `ck_goods` VALUES (1431948815375278202, '1-09-04-4', '1', '09', '04', '4', NULL, '', '2021-09-04 14:24:14', '', '2021-09-04 14:24:14', NULL, 1);
+INSERT INTO `ck_goods` VALUES (1431948815375278203, '1-10-01-1', '1', '10', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278204, '1-10-01-2', '1', '10', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278205, '1-10-01-3', '1', '10', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278206, '1-10-01-4', '1', '10', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278207, '1-10-02-1', '1', '10', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278208, '1-10-02-2', '1', '10', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278209, '1-10-02-3', '1', '10', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278210, '1-10-02-4', '1', '10', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278211, '1-10-03-1', '1', '10', '03', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278212, '1-10-03-2', '1', '10', '03', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278213, '1-10-03-3', '1', '10', '03', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278214, '1-10-03-4', '1', '10', '03', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278215, '1-10-04-1', '1', '10', '04', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278216, '1-10-04-2', '1', '10', '04', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278217, '1-10-04-3', '1', '10', '04', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278218, '1-10-04-4', '1', '10', '04', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278219, '1-11-01-1', '1', '11', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278220, '1-11-01-2', '1', '11', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278221, '1-11-01-3', '1', '11', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278222, '1-11-01-4', '1', '11', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278223, '1-11-02-1', '1', '11', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278224, '1-11-02-2', '1', '11', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278225, '1-11-02-3', '1', '11', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278226, '1-11-02-4', '1', '11', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278227, '1-12-01-1', '1', '12', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278228, '1-12-01-2', '1', '12', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278229, '1-12-01-3', '1', '12', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278230, '1-12-01-4', '1', '12', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278231, '1-12-02-1', '1', '12', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278232, '1-12-02-2', '1', '12', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278233, '1-12-02-3', '1', '12', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278234, '1-12-02-4', '1', '12', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278235, '1-12-03-1', '1', '12', '03', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278236, '1-12-03-2', '1', '12', '03', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278237, '1-12-03-3', '1', '12', '03', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278238, '1-12-03-4', '1', '12', '03', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278239, '1-12-04-1', '1', '12', '04', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278240, '1-12-04-2', '1', '12', '04', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278241, '1-12-04-3', '1', '12', '04', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278242, '1-12-04-4', '1', '12', '04', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278243, '1-13-01-1', '1', '13', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278244, '1-13-01-2', '1', '13', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278245, '1-13-01-3', '1', '13', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278246, '1-13-01-4', '1', '13', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278247, '1-13-02-1', '1', '13', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278248, '1-13-02-2', '1', '13', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278249, '1-13-02-3', '1', '13', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278250, '1-13-02-4', '1', '13', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278251, '1-13-03-1', '1', '13', '03', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278252, '1-13-03-2', '1', '13', '03', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278253, '1-13-03-3', '1', '13', '03', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278254, '1-13-03-4', '1', '13', '03', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278255, '1-13-04-1', '1', '13', '04', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278256, '1-13-04-2', '1', '13', '04', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278257, '1-13-04-3', '1', '13', '04', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278258, '1-13-04-4', '1', '13', '04', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278259, '1-14-01-1', '1', '14', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278260, '1-14-01-2', '1', '14', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278261, '1-14-01-3', '1', '14', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278262, '1-14-01-4', '1', '14', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278263, '1-14-02-1', '1', '14', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278264, '1-14-02-2', '1', '14', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278265, '1-14-02-3', '1', '14', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278266, '1-14-02-4', '1', '14', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278267, '1-15-01-1', '1', '15', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278268, '1-15-01-2', '1', '15', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278269, '1-15-01-3', '1', '15', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278270, '1-15-01-4', '1', '15', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278271, '1-15-02-1', '1', '15', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278272, '1-15-02-2', '1', '15', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278273, '1-15-02-3', '1', '15', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278274, '1-15-02-4', '1', '15', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278275, '1-15-03-1', '1', '15', '03', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278276, '1-15-03-2', '1', '15', '03', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278277, '1-15-03-3', '1', '15', '03', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278278, '1-15-03-4', '1', '15', '03', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278279, '1-15-04-1', '1', '15', '04', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278280, '1-15-04-2', '1', '15', '04', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278281, '1-15-04-3', '1', '15', '04', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278282, '1-15-04-4', '1', '15', '04', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278283, '1-16-01-1', '1', '16', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278284, '1-16-01-2', '1', '16', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278285, '1-16-01-3', '1', '16', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278286, '1-16-01-4', '1', '16', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278287, '1-16-02-1', '1', '16', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278288, '1-16-02-2', '1', '16', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278289, '1-16-02-3', '1', '16', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278290, '1-16-02-4', '1', '16', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278291, '1-16-03-1', '1', '16', '03', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278292, '1-16-03-2', '1', '16', '03', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278293, '1-16-03-3', '1', '16', '03', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278294, '1-16-03-4', '1', '16', '03', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278295, '1-16-04-1', '1', '16', '04', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278296, '1-16-04-2', '1', '16', '04', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278297, '1-16-04-3', '1', '16', '04', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278298, '1-16-04-4', '1', '16', '04', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278299, '1-17-01-1', '1', '17', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278300, '1-17-01-2', '1', '17', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278301, '1-17-01-3', '1', '17', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278302, '1-17-01-4', '1', '17', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278303, '1-17-02-1', '1', '17', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278304, '1-17-02-2', '1', '17', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278305, '1-17-02-3', '1', '17', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278306, '1-17-02-4', '1', '17', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278307, '1-18-01-1', '1', '18', '01', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278308, '1-18-01-2', '1', '18', '01', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278309, '1-18-01-3', '1', '18', '01', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278310, '1-18-01-4', '1', '18', '01', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278311, '1-18-02-1', '1', '18', '02', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278312, '1-18-02-2', '1', '18', '02', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278313, '1-18-02-3', '1', '18', '02', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278314, '1-18-02-4', '1', '18', '02', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278315, '1-18-03-1', '1', '18', '03', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278316, '1-18-03-2', '1', '18', '03', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278317, '1-18-03-3', '1', '18', '03', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278318, '1-18-03-4', '1', '18', '03', '4', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278319, '1-18-04-1', '1', '18', '04', '1', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278320, '1-18-04-2', '1', '18', '04', '2', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278321, '1-18-04-3', '1', '18', '04', '3', NULL, '', NULL, '', NULL, NULL, NULL);
+INSERT INTO `ck_goods` VALUES (1431948815375278322, '1-18-04-4', '1', '18', '04', '4', NULL, '', NULL, '', NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -309,7 +429,7 @@ COMMIT;
 DROP TABLE IF EXISTS `ck_reserver`;
 CREATE TABLE `ck_reserver` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `rfid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'rfid',
+  `rfid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'rfid',
   `box_no` int NOT NULL COMMENT '箱号',
   `material_id` bigint NOT NULL COMMENT '物料关联ID',
   `material_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '物料类别',
@@ -327,13 +447,20 @@ CREATE TABLE `ck_reserver` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `box_key` (`box_no`) USING BTREE,
   UNIQUE KEY `rfid_key` (`rfid`(32)) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1433940773220241410 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1434407980094156803 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of ck_reserver
 -- ----------------------------
 BEGIN;
-INSERT INTO `ck_reserver` VALUES (1433940773220241409, '1234567890', 10, 1432348272193536002, '1', NULL, 100, NULL, '1-01-01-2', 'admin', '2021-09-03 23:51:36', '', NULL, NULL, 'ING', NULL);
+INSERT INTO `ck_reserver` VALUES (1433940773220241409, '1234567890', 10, 1434118725430005762, '', NULL, 100, NULL, '1-01-01-2', 'admin', '2021-09-03 23:51:36', '', NULL, NULL, 'ING', 1);
+INSERT INTO `ck_reserver` VALUES (1434393452996407297, '123', 12, 1434118725430005762, '', NULL, 200, NULL, '1-07-02-4', 'admin', '2021-09-05 05:50:24', '', NULL, NULL, 'ING', 1);
+INSERT INTO `ck_reserver` VALUES (1434405392640618498, '1234', 23, 1434118553392238593, '', NULL, 22, NULL, '1-06-04-4', 'admin', '2021-09-05 06:37:50', '', NULL, NULL, 'ING', 1434118415861010434);
+INSERT INTO `ck_reserver` VALUES (1434406572494110722, '12345', 123, 1434146711009095681, NULL, NULL, 12, NULL, '1-05-04-4', 'admin', '2021-09-05 06:42:32', '', NULL, NULL, 'ING', 1434117890025312258);
+INSERT INTO `ck_reserver` VALUES (1434406878493753345, '123456', 11, 1434146915619827713, NULL, NULL, 12, NULL, '1-02-04-4', 'admin', '2021-09-05 06:43:44', '', NULL, NULL, 'ING', 1434117928600326146);
+INSERT INTO `ck_reserver` VALUES (1434407840121843713, '222', 22, 1434146915619827713, NULL, NULL, 22, NULL, '1-07-04-4', 'admin', '2021-09-05 06:47:34', '', NULL, NULL, 'ING', 1434117928600326146);
+INSERT INTO `ck_reserver` VALUES (1434407909625655298, '33', 33, 1434118089338638337, NULL, NULL, 33, NULL, '1-08-01-3', 'admin', '2021-09-05 06:47:50', '', NULL, NULL, 'ING', 1);
+INSERT INTO `ck_reserver` VALUES (1434407980094156802, '44', 44, 1434118180208234497, NULL, NULL, 44, NULL, '1-09-01-1', 'admin', '2021-09-05 06:48:07', '', NULL, NULL, 'ING', 1);
 COMMIT;
 
 -- ----------------------------
@@ -508,6 +635,10 @@ INSERT INTO `t_sys_dict_data` VALUES (563747459235450880, 0, '重庆小面佐料
 INSERT INTO `t_sys_dict_data` VALUES (563747480336994304, 0, '其他', '4', 'gift_type', '', 'default', 'Y', '0', 'admin', '2021-06-12 17:38:03', '', '2021-06-12 17:38:03', '');
 INSERT INTO `t_sys_dict_data` VALUES (571366029360500736, 0, '是', '1', 'yes_or_no', '', 'default', 'Y', '0', 'admin', '2021-07-03 18:11:27', '', '2021-07-03 18:11:27', '');
 INSERT INTO `t_sys_dict_data` VALUES (571366105029939200, 0, '否', '-1', 'yes_or_no', '', 'info', 'Y', '0', 'admin', '2021-07-03 18:11:45', '', '2021-07-03 18:11:45', '');
+INSERT INTO `t_sys_dict_data` VALUES (1434441829842857985, 1, '入库读卡器1', '1/192.168.222.100', 'inReaderNameList', '', 'default', 'Y', '0', 'admin', '2021-09-05 09:02:38', 'admin', '2021-09-05 09:04:17', '');
+INSERT INTO `t_sys_dict_data` VALUES (1434442095757537281, 2, '入库读卡器2', '2/192.168.222.101', 'inReaderNameList', '', 'default', 'Y', '0', 'admin', '2021-09-05 09:03:41', 'admin', '2021-09-05 09:04:11', '');
+INSERT INTO `t_sys_dict_data` VALUES (1434442198572511233, 3, '入库读卡器3', '3/192.168.222.102', 'inReaderNameList', '', 'default', 'Y', '0', 'admin', '2021-09-05 09:04:05', '', NULL, '');
+INSERT INTO `t_sys_dict_data` VALUES (1434443284800778241, 1, '地址URL', 'http://192.168.222.221:10090/midwareevent', 'inReaderURL', '', 'default', 'Y', '0', 'admin', '2021-09-05 09:08:24', '', NULL, '');
 COMMIT;
 
 -- ----------------------------
@@ -538,6 +669,8 @@ INSERT INTO `t_sys_dict_type` VALUES (373493952487231488, '拦截器类型', 'sy
 INSERT INTO `t_sys_dict_type` VALUES (563746635880992768, '捐款类型', 'payment_type', '0', 'admin', '2021-06-12 17:34:42', '', '2021-06-12 17:34:42', '');
 INSERT INTO `t_sys_dict_type` VALUES (563747016396640256, '礼物类型', 'gift_type', '0', 'admin', '2021-06-12 17:36:13', '', '2021-06-12 17:36:13', '');
 INSERT INTO `t_sys_dict_type` VALUES (571365854613213184, '是与否', 'yes_or_no', '0', 'admin', '2021-07-03 18:10:45', 'admin', '2021-09-03 23:37:42', '用于select');
+INSERT INTO `t_sys_dict_type` VALUES (1434441518847799297, '入库读卡器名称表', 'inReaderNameList', '0', 'admin', '2021-09-05 09:01:23', '', NULL, '多个读卡器使用逗号隔开：xxx,xxx,xxx');
+INSERT INTO `t_sys_dict_type` VALUES (1434443173588807681, '读卡器地址', 'inReaderURL', '0', 'admin', '2021-09-05 09:07:58', '', NULL, '读卡器服务器地址');
 COMMIT;
 
 -- ----------------------------
@@ -949,6 +1082,48 @@ INSERT INTO `t_sys_oper_log` VALUES (1434168810780094466, '分页查询', 'com.f
 INSERT INTO `t_sys_oper_log` VALUES (1434169633413029890, '公告集合查询', 'com.fc.v2.controller.admin.SysNoticeController.list()', 'admin', '/SysNoticeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-04', 'admin', '2021-09-04 15:01:01', '', NULL, NULL);
 INSERT INTO `t_sys_oper_log` VALUES (1434169633715019777, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-04', 'admin', '2021-09-04 15:01:01', '', NULL, NULL);
 INSERT INTO `t_sys_oper_log` VALUES (1434169633777934338, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-04', 'admin', '2021-09-04 15:01:01', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434410096221110273, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 06:56:32', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434410096221110274, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 06:56:32', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434410609478168577, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 06:58:34', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434410609478168578, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 06:58:34', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434411255501578241, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 07:01:08', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434411255539326977, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 07:01:08', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434411583852728322, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 07:02:26', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434411583852728323, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 07:02:26', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434411738324766722, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 07:03:03', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434411738324766723, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 07:03:03', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434412341142724610, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 07:05:27', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434412341142724611, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 07:05:27', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434413831206969345, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 07:11:22', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434413831274078209, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 07:11:22', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434414987832434689, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 07:15:58', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434440767786364929, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 08:58:24', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434440768398733313, '部门表集合查询', 'com.fc.v2.controller.admin.SysDepartmentController.list()', 'admin', '/SysDepartmentController/list', '{}', NULL, '2021-09-05', 'admin', '2021-09-05 08:58:24', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434440768398733314, '分页查询', 'com.fc.v2.controller.admin.SysUserController.list()', 'admin', '/UserController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"id\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 08:58:24', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441232074846210, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"yes_or_no\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:00:15', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441252815679489, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:00:20', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441518977822722, '字典类型表新增', 'com.fc.v2.controller.admin.SysDictTypeController.add()', 'admin', '/DictTypeController/add', '{\"dictName\":[\"入库读卡器名称表\"],\"remark\":[\"多个读卡器使用逗号隔开：xxx,xxx,xxx\"],\"dictType\":[\"inReaderNameList\"],\"status\":[\"0\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:01:23', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441524241674241, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:01:25', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441543615164417, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:01:29', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441829909966850, '字典数据表新增', 'com.fc.v2.controller.admin.SysDictDataController.add()', 'admin', '/DictDataController/add', '{\"dictLabel\":[\"入库读卡器名称\"],\"dictValue\":[\"1/192.168.222.100\"],\"listClass\":[\"default\"],\"isDefault\":[\"Y\"],\"cssClass\":[\"\"],\"dictSort\":[\"1\"],\"dataStatus\":[\"0\"],\"remark\":[\"\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:02:38', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434441835123486721, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:02:39', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442095824646146, '字典数据表新增', 'com.fc.v2.controller.admin.SysDictDataController.add()', 'admin', '/DictDataController/add', '{\"dictLabel\":[\"入库读卡器\"],\"dictValue\":[\"2/192.168.222.101\"],\"listClass\":[\"default\"],\"isDefault\":[\"Y\"],\"cssClass\":[\"\"],\"dictSort\":[\"2\"],\"dataStatus\":[\"0\"],\"remark\":[\"\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:03:41', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442101042360321, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:03:42', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442198639620097, '字典数据表新增', 'com.fc.v2.controller.admin.SysDictDataController.add()', 'admin', '/DictDataController/add', '{\"dictLabel\":[\"入库读卡器3\"],\"dictValue\":[\"3/192.168.222.102\"],\"listClass\":[\"default\"],\"isDefault\":[\"Y\"],\"cssClass\":[\"\"],\"dictSort\":[\"3\"],\"dataStatus\":[\"0\"],\"remark\":[\"\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:04:05', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442203823779841, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:04:07', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442221376942081, '字典数据表修改', 'com.fc.v2.controller.admin.SysDictDataController.editSave()', 'admin', '/DictDataController/edit', '{\"dictLabel\":[\"入库读卡器2\"],\"dictValue\":[\"2/192.168.222.101\"],\"listClass\":[\"default\"],\"isDefault\":[\"Y\"],\"cssClass\":[\"\"],\"dictSort\":[\"2\"],\"remark\":[\"\"],\"id\":[\"1434442095757537281\"],\"dictType\":[\"inReaderNameList\"],\"status\":[\"0\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:04:11', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442226628210690, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:04:12', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442248874799106, '字典数据表修改', 'com.fc.v2.controller.admin.SysDictDataController.editSave()', 'admin', '/DictDataController/edit', '{\"dictLabel\":[\"入库读卡器1\"],\"dictValue\":[\"1/192.168.222.100\"],\"listClass\":[\"default\"],\"isDefault\":[\"Y\"],\"cssClass\":[\"\"],\"dictSort\":[\"1\"],\"remark\":[\"\"],\"id\":[\"1434441829842857985\"],\"dictType\":[\"inReaderNameList\"],\"status\":[\"0\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:04:17', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434442254117679106, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:04:19', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443012296847361, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:07:19', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443173651722242, '字典类型表新增', 'com.fc.v2.controller.admin.SysDictTypeController.add()', 'admin', '/DictTypeController/add', '{\"dictName\":[\"读卡器地址\"],\"remark\":[\"读卡器服务器地址\"],\"dictType\":[\"inReaderURL\"],\"status\":[\"0\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:07:58', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443178840076290, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:07:59', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443196804280321, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderURL\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:08:03', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443284863692802, '字典数据表新增', 'com.fc.v2.controller.admin.SysDictDataController.add()', 'admin', '/DictDataController/add', '{\"dictLabel\":[\"地址URL\"],\"dictValue\":[\"http://192.168.222.221:10090/midwareevent\"],\"listClass\":[\"default\"],\"isDefault\":[\"Y\"],\"cssClass\":[\"\"],\"dictSort\":[\"1\"],\"dataStatus\":[\"0\"],\"remark\":[\"\"],\"dictType\":[\"inReaderURL\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:08:24', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443290119155714, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderURL\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:08:26', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443348445147138, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:08:40', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443354891792385, '字典数据表集合查询', 'com.fc.v2.controller.admin.SysDictDataController.list()', 'admin', '/DictDataController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"asc\"],\"page\":[\"1\"],\"orderByColumn\":[\"dictSort\"],\"dictType\":[\"inReaderNameList\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:08:41', '', NULL, NULL);
+INSERT INTO `t_sys_oper_log` VALUES (1434443362579951617, '字典类型表集合查询', 'com.fc.v2.controller.admin.SysDictTypeController.list()', 'admin', '/DictTypeController/list', '{\"limit\":[\"10\"],\"isAsc\":[\"desc\"],\"page\":[\"1\"],\"orderByColumn\":[\"createTime\"]}', NULL, '2021-09-05', 'admin', '2021-09-05 09:08:43', '', NULL, NULL);
 COMMIT;
 
 -- ----------------------------
