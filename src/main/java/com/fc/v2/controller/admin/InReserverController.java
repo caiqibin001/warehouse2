@@ -63,7 +63,6 @@ public class InReserverController extends BaseController {
      */
     @ApiOperation(value = "入库页面", notes = "入库页面")
     @GetMapping("/in")
-    @RequiresPermissions("system:ckReserver:in")
     public String view(ModelMap model) {
 
         CompletableFuture c = CompletableFuture.runAsync(()->{
@@ -91,7 +90,6 @@ public class InReserverController extends BaseController {
      */
     @ApiOperation(value = "分页跳转", notes = "分页跳转")
     @GetMapping("/inReserverlist")
-    @RequiresPermissions("system:ckReserver:inReserverlist")
     @ResponseBody
     public ResultTable getInReserverVO() {
         getInReserver();
@@ -108,7 +106,7 @@ public class InReserverController extends BaseController {
     public void getInReserver(){
         getInReaderNameList().forEach(inReaderName -> {
             RrfidVo rfidVo = getRrfidVo(inReaderName,getInReaderURL());
-            if (rfidVo.getErr_code().equals("0")) {
+            if (!ObjectUtils.isEmpty(rfidVo) && rfidVo.getErr_code().equals("0")) {
                 rfidVo.getMsg_data().forEach(data -> {
                     QueryWrapper<CkReserver> queryWrapper = new QueryWrapper<>();
                     queryWrapper.eq("rfid",data.getEpc());
@@ -131,13 +129,14 @@ public class InReserverController extends BaseController {
     }
 
     private RrfidVo getRrfidVo(String inReaderName, String inReaderURL) {
-        Map<String,Object> map = new HashMap<>();
-        map.put("msg_data",inReaderName);
-        map.put("msg_type",63);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Content-Type","application/json");
-        HttpEntity requestEntity = new HttpEntity(map,httpHeaders);
-        return restTemplate.postForObject(inReaderURL, requestEntity,RrfidVo.class);
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("msg_data",inReaderName);
+//        map.put("msg_type",63);
+//        HttpHeaders httpHeaders = new HttpHeaders();
+//        httpHeaders.set("Content-Type","application/json");
+//        HttpEntity requestEntity = new HttpEntity(map,httpHeaders);
+//        return restTemplate.postForObject(inReaderURL, requestEntity,RrfidVo.class);
+        return null;
     }
 
     /**
@@ -146,7 +145,7 @@ public class InReserverController extends BaseController {
      */
     public List<String> getInReaderNameList() {
         QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("dictType","inReaderNames");
+        queryWrapper.eq("dict_type","inReaderNames");
         List<TSysDictData> tSysDictDataList = tSysDictDataMapper.selectList(queryWrapper);
         List<String> list = tSysDictDataList.stream().map(tSysDictData->tSysDictData.getDictValue()).collect(Collectors.toList());
         if (ObjectUtils.isEmpty(list)) {
@@ -163,9 +162,11 @@ public class InReserverController extends BaseController {
     public String getInReaderURL() {
         String inReaderURL = "http://192.168.222.221:10090/midwareevent";
         QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("dictType","readerURL");
+        queryWrapper.eq("dict_type","readerURL");
         TSysDictData tSysDictData = tSysDictDataMapper.selectOne(queryWrapper);
-        inReaderURL = tSysDictData.getDictValue();
+        if (!ObjectUtils.isEmpty(tSysDictData)) {
+            inReaderURL = tSysDictData.getDictValue();
+        }
         return inReaderURL;
     }
 }

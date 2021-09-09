@@ -63,7 +63,6 @@ public class OutReserverController extends BaseController {
      */
     @ApiOperation(value = "出库页面", notes = "出库页面")
     @GetMapping("/out")
-    @RequiresPermissions("system:ckReserver:out")
     public String view() {
         OutReserverController.getOutReserverList().clear();
         CompletableFuture.runAsync(()->{
@@ -82,7 +81,6 @@ public class OutReserverController extends BaseController {
      */
     @ApiOperation(value = "分页跳转", notes = "分页跳转")
     @GetMapping("/outReserverlist")
-    @RequiresPermissions("system:ckReserver:outReserverlist")
     @ResponseBody
     public ResultTable getOutReserverVO() {
         Map map = new HashMap();
@@ -99,7 +97,7 @@ public class OutReserverController extends BaseController {
     public void getOutReserver(){
         getOutReaderNameList().forEach(outReaderName -> {
             RrfidVo rfidVo = getRrfidVo(outReaderName,getOutReaderURL());
-            if (rfidVo.getErr_code().equals("0")) {
+            if (!ObjectUtils.isEmpty(rfidVo) && rfidVo.getErr_code().equals("0")) {
                 rfidVo.getMsg_data().forEach(data -> {
                     OutReserverController.getOutReserverList().forEach(ckReserver -> {
                         if (ckReserver.getRfid().equals(data.getEpc())) {
@@ -110,20 +108,20 @@ public class OutReserverController extends BaseController {
                             }
                         }
                     });
-
                 });
             }
         });
     }
 
     private RrfidVo getRrfidVo(String OutReaderName, String OutReaderURL) {
-        Map<String,Object> map = new HashMap<>();
-        map.put("msg_data",OutReaderName);
-        map.put("msg_type",63);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Content-Type","application/json");
-        HttpEntity requestEntity = new HttpEntity(map,httpHeaders);
-        return restTemplate.postForObject(OutReaderURL, requestEntity,RrfidVo.class);
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("msg_data",OutReaderName);
+//        map.put("msg_type",63);
+//        HttpHeaders httpHeaders = new HttpHeaders();
+//        httpHeaders.set("Content-Type","application/json");
+//        HttpEntity requestEntity = new HttpEntity(map,httpHeaders);
+//        return restTemplate.postForObject(OutReaderURL, requestEntity,RrfidVo.class);
+        return null;//mock
     }
 
 
@@ -133,7 +131,7 @@ public class OutReserverController extends BaseController {
      */
     public List<String> getOutReaderNameList() {
         QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("dictType","outReaderNames");
+        queryWrapper.eq("dict_type","outReaderNames");
         List<TSysDictData> tSysDictDataList = tSysDictDataMapper.selectList(queryWrapper);
         List<String> list = tSysDictDataList.stream().map(tSysDictData -> tSysDictData.getDictValue()).collect(Collectors.toList());
         if (ObjectUtils.isEmpty(list)) {
@@ -150,9 +148,11 @@ public class OutReserverController extends BaseController {
     public String getOutReaderURL() {
         String OutReaderURL = "http://192.168.222.221:10090/midwareevent";
         QueryWrapper<TSysDictData> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("dictType","readerURL");
+        queryWrapper.eq("dict_type","readerURL");
         TSysDictData tSysDictData = tSysDictDataMapper.selectOne(queryWrapper);
-        OutReaderURL = tSysDictData.getDictValue();
+        if (!ObjectUtils.isEmpty(tSysDictData)) {
+            OutReaderURL = tSysDictData.getDictValue();
+        }
         return OutReaderURL;
     }
 
